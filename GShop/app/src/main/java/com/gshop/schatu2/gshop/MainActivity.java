@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity{
     EditText ed1,ed2;
 
     TextView tx1;
-    int counter = 3;
+    int counter = 3;    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
