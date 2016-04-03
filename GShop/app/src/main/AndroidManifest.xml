@@ -19,6 +19,8 @@
         <activity android:name=".RecyclerViewActivity">
 
         </activity>
+        <activity android:name=".ProductLayout"></activity>
+        <activity android:name=".Checkout"></activity>
     </application>
 
 </manifest>

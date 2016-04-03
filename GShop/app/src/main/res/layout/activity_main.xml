@@ -10,7 +10,7 @@
     <include
         android:id="@+id/my_toolbar"
         layout="@layout/toolbar"></include>
-
+    
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv"
         android:layout_width="match_parent"
