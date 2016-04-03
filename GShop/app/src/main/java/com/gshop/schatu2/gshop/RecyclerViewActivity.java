@@ -4,13 +4,16 @@ package com.gshop.schatu2.gshop;
  * Created by schatu2 on 4/2/16.
  */
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +22,7 @@ public class RecyclerViewActivity extends AppCompatActivity {
 
     private List<Product> products;
     private RecyclerView rv;
+    private CardView cv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,12 +35,19 @@ public class RecyclerViewActivity extends AppCompatActivity {
         LinearLayoutManager llm = new LinearLayoutManager(this);
         rv.setLayoutManager(llm);
         rv.setHasFixedSize(true);
-
+        String username = getIntent().getExtras().getString("username");
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
-        myToolbar.setTitle("GShop");
+        getSupportActionBar().setTitle("Product List");
         initializeData();
         initializeAdapter();
+        /*cv = (CardView)findViewById(R.id.cv);
+        cv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(RecyclerViewActivity.this, ProductLayout.class));
+            }
+        });*/
     }
 
     private void initializeData() {
@@ -51,7 +62,7 @@ public class RecyclerViewActivity extends AppCompatActivity {
     }
 
     private void initializeAdapter() {
-        RVAdapter adapter = new RVAdapter(products);
+        RVAdapter adapter = new RVAdapter(products, this);
         rv.setAdapter(adapter);
     }
 

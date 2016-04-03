@@ -44,13 +44,16 @@ public class MainActivity extends AppCompatActivity{
        // b2=(Button)findViewById(R.id.button2);
         tx1=(TextView)findViewById(R.id.textView3);
         tx1.setVisibility(View.GONE);
-
+        
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if((ed1.getText().toString().equals("darshnik") && ed2.getText().toString().equals("walmart"))) {
+                if((ed1.getText().toString().equals("darshnik") && ed2.getText().toString().equals("walmart")) || (ed1.getText().toString().equals("vasudha") && ed2.getText().toString().equals("walmart")) || (ed1.getText().toString().equals("yash") && ed2.getText().toString().equals("walmart")) || (ed1.getText().toString().equals("snigdha") && ed2.getText().toString().equals("walmart"))) {
                     Toast.makeText(getApplicationContext(), "Redirecting...",Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(MainActivity.this, RecyclerViewActivity.class));
+                    Intent intent = new Intent(MainActivity.this, RecyclerViewActivity.class);
+                    intent.putExtra("username", ed1.getText().toString());
+                    startActivity(intent);
+                   // startActivity(new Intent(MainActivity.this, RecyclerViewActivity.class));
                 }
                 else{
                     Toast.makeText(getApplicationContext(), "Wrong Credentials",Toast.LENGTH_SHORT).show();
