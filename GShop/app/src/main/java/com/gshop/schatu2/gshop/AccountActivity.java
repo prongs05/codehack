@@ -1,13 +1,8 @@
 package com.gshop.schatu2.gshop;
 
-/**
- * Created by schatu2 on 4/2/16.
- */
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -17,10 +12,12 @@ import android.view.MenuItem;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecyclerViewActivity extends AppCompatActivity {
-
+/**
+ * Created by schatu2 on 4/3/16.
+ */
+public class AccountActivity extends AppCompatActivity {
     private RecyclerView rv;
-    private CardView cv;
+    private List<String> items;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,15 +31,22 @@ public class RecyclerViewActivity extends AppCompatActivity {
         rv.setLayoutManager(llm);
         rv.setHasFixedSize(true);
 
-        String username = getIntent().getExtras().getString("username");
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
-        getSupportActionBar().setTitle("Product List");
+        myToolbar.setTitle("GShop");
+        initializeData();
         initializeAdapter();
     }
 
+    private void initializeData() {
+        items = new ArrayList<>();
+        items.add("Orders");
+        items.add("Groups");
+        items.add("Wallet");
+        }
+
     private void initializeAdapter() {
-        RVAdapter adapter = new RVAdapter(ProductList.productList, this);
+        AccAdapter adapter = new AccAdapter(items, this);
         rv.setAdapter(adapter);
     }
 
@@ -62,7 +66,6 @@ public class RecyclerViewActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-//            startActivity(new Intent(RecyclerViewActivity.this, AccountActivity.class));
             startActivity(new Intent(this, AccountActivity.class));
             return true;
         }

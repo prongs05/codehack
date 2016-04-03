@@ -1,49 +1,35 @@
 package com.gshop.schatu2.gshop;
 
-/**
- * Created by schatu2 on 4/2/16.
- */
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class RecyclerViewActivity extends AppCompatActivity {
+/**
+ * Created by schatu2 on 4/3/16.
+ */
+public class WalletActivity extends AppCompatActivity{
 
     private RecyclerView rv;
-    private CardView cv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.wallet);
 
-        rv = (RecyclerView) findViewById(R.id.rv);
-
-        LinearLayoutManager llm = new LinearLayoutManager(this);
-        rv.setLayoutManager(llm);
-        rv.setHasFixedSize(true);
-
-        String username = getIntent().getExtras().getString("username");
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
-        getSupportActionBar().setTitle("Product List");
-        initializeAdapter();
-    }
+        myToolbar.setTitle("GShop");
 
-    private void initializeAdapter() {
-        RVAdapter adapter = new RVAdapter(ProductList.productList, this);
-        rv.setAdapter(adapter);
+        TextView textView = (TextView)findViewById(R.id.wallet_text);
+        String msg = String.format("Your wallet currently has \n\t Rs. %f", Wallet.amount);
+        textView.setText(msg);
     }
 
     @Override
@@ -69,4 +55,5 @@ public class RecyclerViewActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 }

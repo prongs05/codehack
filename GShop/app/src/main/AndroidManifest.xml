@@ -16,10 +16,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RecyclerViewActivity">
 
-        </activity>
+        <activity android:name=".RecyclerViewActivity"></activity>
+
+        <activity android:name=".AccountActivity"></activity>
+
+        <activity android:name=".OrderActivity"></activity>
+
+        <activity android:name=".WalletActivity"></activity>
+
         <activity android:name=".ProductLayout"></activity>
+
         <activity android:name=".Checkout"></activity>
     </application>
 
